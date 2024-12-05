@@ -31,7 +31,7 @@ export default class MemoryCache extends CacheAsbract {
 
 	public set<T>(key: string, value: T, ttl?: number | undefined): boolean {
 		let expire: number | undefined
-		if (ttl) {
+		if (typeof ttl === 'number') {
 			expire = new Date().getTime() + ttl * 1000
 		}
 		this.cache.set(key, {
